@@ -1,13 +1,13 @@
 defmodule CSV.Mixfile do
   use Mix.Project
 
-  def project do
+  def project() do
     [
         app: :csv,
         version: "2.0.0",
         elixir: "~> 1.1",
-        deps: deps,
-        package: package,
+        deps: deps(),
+        package: package(),
         docs: &docs/0,
         name: "CSV",
         consolidate_protocols: true,
@@ -18,11 +18,11 @@ defmodule CSV.Mixfile do
     ]
   end
 
-  def application do
+  def application() do
     [applications: [:parallel_stream]]
   end
 
-  defp package do
+  defp package() do
     [
         maintainers: ["Beat Richartz"],
         licenses: ["MIT"],
@@ -30,7 +30,7 @@ defmodule CSV.Mixfile do
     ]
   end
 
-  defp deps do
+  defp deps() do
     [
       {:parallel_stream, "~> 1.0.4"},
       {:excoveralls, "~> 0.5", only: :test},
@@ -44,7 +44,7 @@ defmodule CSV.Mixfile do
     ]
   end
 
-  defp docs do
+  defp docs() do
     {ref, 0} = System.cmd("git", ["rev-parse", "--verify", "--quiet", "HEAD"])
 
     [
